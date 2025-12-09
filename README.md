@@ -8,3 +8,6 @@
 Unblocked games.
 ## Whats in the future?
 More games and features.
+## Can I play without installing anything?
+Yes, at https://notro-r.github.io/gamehub/
+or press the release button and open the URL.
