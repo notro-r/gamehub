@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Game Hub</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <div id="sidebar">
+    <h1>🎮 Game Hub</h1>
+
+    <input 
+  type="text" 
+  id="searchBar" 
+  placeholder="search games..." 
+  onkeyup="filterGames()" 
+  style="width:90%; max-width:600px; padding:12px; margin: 20px auto; display:block; border-radius:8px; border:none; background:#222; color:#fff;"
+>
+
+
+    <div class="game-btn" data-name="Flappy Bird" onclick="loadGame('games/flappy.html')">
+      <img src="assets/icons/flappy.png" />
+      <span>Flappy Bird</span>
+    </div>
+
+    <div class="game-btn" data-name="Obby Robby" onclick="loadGame('games/obbyrobby.html')">
+      <img src="assets/icons/obbyrobby.png" />
+      <span>Obby Robby</span>
+    </div>
+
+    <div class="game-btn" data-name="2048" onclick="loadGame('games/2048.html')">
+      <img src="assets/icons/2048.png" />
+      <span>2048</span>
+    </div>
+
+    <div class="game-btn" data-name="BitLife" onclick="loadGame('games/bitlife.html')">
+      <img src="assets/icons/bitlife.png" />
+      <span>BitLife</span>
+    </div>
+
+    <div class="game-btn" data-name="Little Alchemy" onclick="loadGame('games/littlealchemy.html')">
+      <img src="assets/icons/littlealchemy.png" />
+      <span>Little Alchemy</span>
+    </div>
+    
+    <div class="game-btn" data-name="Sort the Court" onclick="loadGame('games/sortthecort.html')">
+      <img src="assets/icons/sortcourt.png" />
+      <span>Sort the Court</span>
+    </div>
+
+    <div class="game-btn" data-name="Kill the Ice Age Baby: Adventure" onclick="loadGame('games/killtheiceagebaby.html')">
+      <img src="assets/icons/iceage.png" />
+      <span>Kill the Ice Age Baby: Adventure</span>
+    </div>
+
+    <div class="game-btn" data-name="Among Us" onclick="loadGame('games/amongus.html')">
+      <img src="assets/icons/amongus.png" />
+      <span>Among Us</span>
+    </div>
+
+    <div class="game-btn" data-name="Baldis Basics" onclick="loadGame('games/baldisbasics.html')">
+      <img src="assets/icons/baldis.png" />
+      <span>Baldis Basics</span>
+    </div>
+
+    <div class="game-btn" data-name="Paper.io 2" onclick="loadGame('games/paperio2.html')">
+      <img src="assets/icons/paperio2.png" />
+      <span>Paper.io 2</span>
+    </div>
+
+    <div class="game-btn" data-name="Bloxorz" onclick="loadGame('games/bloxorz.html')">
+      <img src="assets/icons/bloxorz.png" />
+      <span>Bloxorz</span>
+    </div>
+  </div>
+
+  <div id="content">
+    <div id="welcome">
+      <h2>Welcome to the Game Hub</h2>
+      <p>Select a game from the left to start playing!</p>
+    </div>
+
+    <iframe id="gameFrame" src=""></iframe>
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+function filterGames() {
+  let input = document.getElementById("searchBar").value.toLowerCase();
+  let games = document.querySelectorAll(".game-btn");
+
+  games.forEach(game => {
+    let name = game.getAttribute("data-name").toLowerCase();
+    game.style.display = name.includes(input) ? "flex" : "none";
+  });
+}
+</script>
+
+</body>
+</html>

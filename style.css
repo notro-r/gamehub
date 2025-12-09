@@ -1,0 +1,150 @@
+/* base layout */
+body {
+  margin: 0;
+  display: flex;
+  height: 100vh;
+  font-family: Arial, sans-serif;
+  background: #0f0f0f;
+  color: white;
+}
+
+/* SIDEBAR */
+#sidebar {
+  width: 260px;
+  background: #181818;
+  padding: 20px;
+  box-sizing: border-box;
+
+  /* make sidebar scrollable */
+  height: 100vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  /* TRICK: put the scrollbar on the LEFT */
+  direction: rtl;
+  padding-left: 12px; /* space between content and scrollbar */
+}
+
+/* restore normal direction for children so text/images don't flip */
+#sidebar > * {
+  direction: ltr;
+}
+
+/* heading */
+#sidebar h1 {
+  margin: 0 0 20px;
+  font-size: 24px;
+  text-align: center;
+}
+
+/* GAME BUTTONS */
+.game-btn {
+  display: flex;
+  align-items: center;
+  background: #222;
+  padding: 12px;
+  border-radius: 10px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  transition: 0.2s;
+
+  /* ensure flex child layout behaves normally after the RTL trick */
+  justify-content: flex-start;
+  gap: 12px;
+}
+
+.game-btn:hover {
+  background: #333;
+  transform: scale(1.02);
+}
+
+.game-btn img {
+  width: 40px;
+  height: 40px;
+  border-radius: 5px;
+  margin-right: 12px;
+}
+
+.game-btn span {
+  font-size: 18px;
+}
+
+/* MAIN CONTENT */
+#content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Welcome screen */
+#welcome {
+  text-align: center;
+  margin: auto;
+}
+
+#iframe-loading {
+  display: none;
+}
+
+/* IFRAME */
+iframe {
+  flex: 1;
+  border: none;
+  display: none;
+}
+
+/* CUSTOM SIDEBAR SCROLLBAR (Chromium browsers) */
+#sidebar::-webkit-scrollbar {
+  width: 10px;
+}
+
+#sidebar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+#sidebar::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 10px;
+}
+
+#sidebar::-webkit-scrollbar-thumb:hover {
+  background: #444;
+}
+
+/* FIREFOX scrollbar styling */
+#sidebar {
+  scrollbar-width: thin;
+  scrollbar-color: #333 transparent;
+}
+
+/* MOBILE: stack layout and horizontal game list */
+@media (max-width: 700px) {
+  body {
+    flex-direction: column;
+  }
+
+  #sidebar {
+    width: 100%;
+    display: flex;
+    overflow-x: auto;
+    height: auto; /* don't force full-height on mobile */
+    direction: ltr; /* use normal direction on narrow screens */
+    padding-left: 0;
+  }
+
+  .game-btn {
+    flex-direction: column;
+    margin-right: 10px;
+    min-width: 100px;
+    text-align: center;
+  }
+
+  .game-btn img {
+    margin: 0 0 5px 0;
+  }
+
+  /* hide the desktop left scrollbar on mobile (optional) */
+  #sidebar::-webkit-scrollbar {
+    display: none;
+  }
+}
